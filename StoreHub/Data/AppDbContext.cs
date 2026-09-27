@@ -10,7 +10,13 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            // Loop 
+            // Refrential type behavior Loop
+
+
+            // Query Filter
+            modelBuilder.Entity<Product>()
+                .HasQueryFilter(p => !p.IsDeleted);
+
 
             base.OnModelCreating(modelBuilder);
         }

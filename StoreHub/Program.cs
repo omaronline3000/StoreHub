@@ -10,6 +10,7 @@ namespace StoreHub
             // Add services to the container.
             builder.Services.AddControllers();
 
+            // DbContext Service Registeration
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));

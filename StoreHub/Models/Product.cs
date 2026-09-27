@@ -12,6 +12,8 @@ namespace StoreHub.Model
         public string Description { get; set; }
         public int Quantity { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         // Foriegen Key For Category
         public int? CategoryId { get; set; }
     }
