@@ -39,10 +39,9 @@ namespace StoreHub.Controllers
         [HttpPut("{id:int}")]
         public IActionResult Update(int id, AddUpdateProductDTO productDTO)
         {
-            var product = _productService.GetById(id);
+            var product = _productService.Update(id , productDTO);
             if (product is null) return NotFound("There is no Product With that Id");
-            _productService.Update(id, productDTO);
-            return NoContent();
+            else return NoContent();
 
         }
 

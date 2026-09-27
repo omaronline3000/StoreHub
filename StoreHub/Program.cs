@@ -1,4 +1,7 @@
 
+using StoreHub.Repositories;
+using StoreHub.Services;
+
 namespace StoreHub
 {
     public class Program
@@ -16,16 +19,22 @@ namespace StoreHub
                 options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
             });
 
+            // Register Custom Services
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ProductService>();
+
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseAuthorization();

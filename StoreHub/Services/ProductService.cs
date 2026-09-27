@@ -34,17 +34,15 @@ namespace StoreHub.Services
             return product;
 
         }
-        public Product Update(int id , AddUpdateProductDTO productDTO)
+        public Product? Update(int id, AddUpdateProductDTO productDTO)
         {
-            Product product = new()
-            {
-                id = id,
-                Name = productDTO.Name,
-                Description = productDTO.Description,
-                Price = productDTO.Price,
-                Quantity = productDTO.Quantity
-            };
-            _productRepository.Update(product);
+            var product = _productRepository.GetById(id);
+            if (product is null) return null;
+            product.id = id;
+            product.Name = productDTO.Name;
+            product.Description = productDTO.Description;
+            product.Price = productDTO.Price;
+            product.Quantity = productDTO.Quantity;
             _productRepository.Save();
             return product;
         }
