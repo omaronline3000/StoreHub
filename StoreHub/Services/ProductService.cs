@@ -1,4 +1,5 @@
-﻿using StoreHub.Repositories;
+﻿using StoreHub.DTO;
+using StoreHub.Repositories;
 
 namespace StoreHub.Services
 {
@@ -19,16 +20,33 @@ namespace StoreHub.Services
             return _productRepository.GetById(id);
         }
 
-        public void Add(Product product)
+        public Product Add(AddUpdateProductDTO productDTO)
         {
+            Product product = new()
+            {
+                Name = productDTO.Name,
+                Description = productDTO.Description,
+                Price = productDTO.Price,
+                Quantity = productDTO.Quantity
+            };
             _productRepository.Add(product);
             _productRepository.Save();
+            return product;
 
         }
-        public void Update(Product product)
+        public Product Update(int id , AddUpdateProductDTO productDTO)
         {
+            Product product = new()
+            {
+                id = id,
+                Name = productDTO.Name,
+                Description = productDTO.Description,
+                Price = productDTO.Price,
+                Quantity = productDTO.Quantity
+            };
             _productRepository.Update(product);
             _productRepository.Save();
+            return product;
         }
         public void Delete(int id)
         {

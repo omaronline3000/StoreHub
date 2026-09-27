@@ -27,9 +27,7 @@
         }
         public void Delete(int id)
         {
-            var product = _context.products.Find(id);
-            if (product is not null) 
-                product.IsDeleted = true;
+            _context.products.Find(id)!.IsDeleted = true;
         }
         public void Save()
         {
