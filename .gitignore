@@ -41,6 +41,7 @@ coverage.*
 appsettings.Development.json
 appsettings.Local.json
 secrets.json
+appsettings.json
 
 # Environment variables and local secrets
 .env
@@ -76,3 +77,7 @@ desktop.ini
 
 # Publish output
 publish/
+
+
+#additional files
+index.html
