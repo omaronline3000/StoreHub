@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StoreHub.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreHub.Model
 {
@@ -15,6 +17,8 @@ namespace StoreHub.Model
         public bool IsDeleted { get; set; }
 
         // Foriegen Key For Category
+        [ForeignKey(nameof(Category))]
         public int? CategoryId { get; set; }
+        public Category? category { get; set; }
     }
 }

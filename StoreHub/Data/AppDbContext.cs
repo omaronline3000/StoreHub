@@ -1,6 +1,9 @@
-﻿namespace StoreHub.Data
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using StoreHub.Models;
+
+namespace StoreHub.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -22,6 +25,7 @@
         }
 
         public DbSet<Product> products { get; set; }
+        public DbSet<Category> categories { get; set; }
 
     }
 }

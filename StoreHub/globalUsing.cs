@@ -4,3 +4,7 @@ global using Microsoft.AspNetCore.Mvc;
 global using StoreHub.Data;
 global using StoreHub.Model;
 global using StoreHub.Controllers;
+global using StoreHub.DTO;
+global using StoreHub.Services;
+global using StoreHub.Repositories;
+global using Microsoft.Identity;

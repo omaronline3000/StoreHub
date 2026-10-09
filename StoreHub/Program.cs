@@ -1,6 +1,9 @@
 
+using Microsoft.AspNetCore.Identity;
+using StoreHub.Models;
 using StoreHub.Repositories;
 using StoreHub.Services;
+using System.Threading.RateLimiting;
 
 namespace StoreHub
 {
@@ -19,9 +22,28 @@ namespace StoreHub
                 options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
             });
 
+
+            // register identity 
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+
             // Register Custom Services
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ProductService>();
+            builder.Services.AddScoped<CategoryService>();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Default", policy =>
+                {
+                    policy
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -37,6 +59,10 @@ namespace StoreHub
                 app.UseSwaggerUI();
             }
 
+
+            app.UseCors("Default");
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

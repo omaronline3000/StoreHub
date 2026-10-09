@@ -1,20 +1,78 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+
 # Visual Studio
 .vs/
-.vscode/
-
-# Build output
-**/bin/
-**/obj/
-
-# User-specific files
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.sln.ide
 
-# Dependencies restored by the project
-**/wwwroot/lib/
-
-# Rider
+# Rider / JetBrains
 .idea/
+*.sln.iml
 
-# Local/archive files
-*.zip
+# VS Code
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+
+# Test results and coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# ASP.NET Core local settings and secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Logs
+*.log
+logs/
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Publish output
+publish/
