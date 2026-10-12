@@ -8,3 +8,7 @@ global using StoreHub.DTO;
 global using StoreHub.Services;
 global using StoreHub.Repositories;
 global using Microsoft.Identity;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using StoreHub.UnitOfWork.Repositories;
+global using StoreHub.UnitOfWork;

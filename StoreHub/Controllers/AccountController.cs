@@ -78,7 +78,7 @@ namespace StoreHub.Controllers
                         issuer: _configure["JWT:Issuer"],
                         audience: _configure["JWT:Audience"],
                         claims: Claims,
-                        expires: new DateTime().AddHours(1),
+                        expires: DateTime.Now.AddHours(1),
                         signingCredentials: cred
 
                         );
@@ -87,7 +87,7 @@ namespace StoreHub.Controllers
                     return Ok(new
                     {
                         token = new JwtSecurityTokenHandler().WriteToken(jwt),
-                        expirationDate = _configure.GetValue<int>("JWT:ExpiratoinInHourse")
+                        expirationDateInHourse = _configure.GetValue<int>("JWT:ExpiratoinInHourse")
                     });
 
                 }

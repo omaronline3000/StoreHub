@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Abstractions;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 using StoreHub.DTO;
 using StoreHub.Services;
 
@@ -9,14 +10,17 @@ namespace StoreHub.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
-        public ProductController(ProductService productService)
+        private readonly IBaseRepository<Product> _productRepository;
+        public ProductController(ProductService productService , IBaseRepository<Product> productRepository)
         {
             _productService = productService;
+            _productRepository = productRepository;
         }
+
         [HttpGet]
         public IActionResult GetAll()
         {
-            var products = _productService.GetAll();
+            var products = _productRepository.GetAll();
             return Ok(products);
         }
 
