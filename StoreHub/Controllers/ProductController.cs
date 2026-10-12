@@ -10,17 +10,17 @@ namespace StoreHub.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
-        private readonly IBaseRepository<Product> _productRepository;
-        public ProductController(ProductService productService , IBaseRepository<Product> productRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public ProductController(ProductService productService , IUnitOfWork unitOfWork)
         {
             _productService = productService;
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var products = _productRepository.GetAll();
+            var products = _unitOfWork.Product.GetAll();
             return Ok(products);
         }
 

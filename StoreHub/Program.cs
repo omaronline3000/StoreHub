@@ -58,6 +58,7 @@ namespace StoreHub
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
             builder.Services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddScoped<CategoryService>();
 
