@@ -87,6 +87,23 @@ namespace StoreHub
                 app.UseSwaggerUI();
             }
 
+            app.UseExceptionHandler(configure =>
+            {
+                configure.Run(async context =>
+                {
+                    context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+
+                    context.Response.ContentType = "application/json";
+
+                    await context.Response.WriteAsJsonAsync(new
+                    {
+                        status = "500",
+                        message = $"Internal Server Error Ocurred, Contact the Developer {builder.Configuration["OfficalMail"]}",
+                        traceid = context.TraceIdentifier
+                    });
+
+                });
+            });
 
             app.UseCors("Default");
 
